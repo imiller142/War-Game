@@ -69,7 +69,7 @@ new_deck.shuffle()
 for x in range(26):
     player_one.add_cards(new_deck.deal_one())
     player_two.add_cards(new_deck.deal_one())
-
+    
 import pdb
 
 game_on = True
@@ -85,3 +85,23 @@ while game_on:
         print("Player One is out of cards! Game Over")
         print("Player Two Wins!")
         game_on = False
+        
+    if len(player_two.all_cards) == 0:
+        print("Player Two out of cards! Game Over")
+        print("Player One Wnds!")
+        game_on = False
+        break
+
+    # Otherwise, the game is still on!
+
+    # Start a new round reset current cards "on the table"
+    player_one_cards = []
+    player_one_cards.append(player_one.remove_one())
+
+    player_two_cards = []
+    player_two_cards.append(player_two.remove_one())
+
+    at_war = True
+    
+    while at_war:
+
